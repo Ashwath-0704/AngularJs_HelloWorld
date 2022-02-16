@@ -16,7 +16,9 @@ export class AppComponent {
   title = 'HelloWorld';
   imageURl="https://www.bridgelabz.com/assets/images/BridgeLabz%20New%20Logo.svg";
   bridgelabzURL="https://www.bridgelabz.com/";
-  userName: String = "";
+  userName: string = "";
+  nameError: string="";
+
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -31,5 +33,15 @@ export class AppComponent {
   onClick($event){
     console.log("Save button is clicked!",$event);
     window.open(this.bridgelabzURL,"_blank");
+  }
+
+  onInput($event){
+    console.log("Change event occurred!",$event);
+    const userNameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+    if (userNameRegex.test(this.userName)) {
+        this.nameError=""
+        return;
+    }
+    this.nameError="Name must consist of Initial Caps and min 3 Letter."
   }
 }
