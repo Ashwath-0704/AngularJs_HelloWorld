@@ -16,11 +16,11 @@ export class AppComponent {
   title = 'HelloWorld';
   imageURl="https://www.bridgelabz.com/assets/images/BridgeLabz%20New%20Logo.svg";
   bridgelabzURL="https://www.bridgelabz.com/";
-
+  userName: String = "";
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.title="Hello from BridgesLabz.";
+    this.title="Hello "+ this.userName + "from BridgesLabz.";
   }
 
   /**
