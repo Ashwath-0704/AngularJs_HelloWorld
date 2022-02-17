@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 /**
  * The root component of the application.           
@@ -12,7 +12,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss',]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
   title = 'HelloWorld';
   imageURl="https://www.bridgelabz.com/assets/images/BridgeLabz%20New%20Logo.svg";
   bridgelabzURL="https://www.bridgelabz.com/";
@@ -22,7 +23,7 @@ export class AppComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.title="Hello "+ this.userName + "from BridgesLabz.";
+    this.title="Hello from BridgesLabz.";
   }
 
   /**
@@ -35,9 +36,19 @@ export class AppComponent {
     window.open(this.bridgelabzURL,"_blank");
   }
 
+  /**
+   * This function is called when the userName input changes.       
+   * @param {Event} $event - the change event object       
+   * @returns None       
+   */
   onInput($event){
     console.log("Change event occurred!",$event);
     const userNameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+    /**
+     * Checks if the user name is valid.       
+     * @param {string} userName - the user name to check       
+     * @returns {boolean} - true if the user name is valid, false otherwise       
+     */
     if (userNameRegex.test(this.userName)) {
         this.nameError=""
         return;
